@@ -27,18 +27,18 @@ public class MainScreen extends JFrame{
         @Override
         public void mouseReleased(MouseEvent e) {
 
-            if (rightPanel.pages.get(rightPanel.pNum).getGesture() == true) {
-                if (rightPanel.pages.get(rightPanel.pNum).getWGest() == 1) {
+            if (rightPanel.newOverview.pages.get(rightPanel.newOverview.pNum).getGesture() == true) {
+                if (rightPanel.newOverview.pages.get(rightPanel.newOverview.pNum).getWGest() == 1) {
                     rightPanel.nextPage();
                     statusBar.setText("right arrow recognized");
-                } else if (rightPanel.pages.get(rightPanel.pNum).getWGest() == 2) {
+                } else if (rightPanel.newOverview.pages.get(rightPanel.newOverview.pNum).getWGest() == 2) {
                     rightPanel.backPage();
                     statusBar.setText("left arrow recognized");
-                } else if (rightPanel.pages.get(rightPanel.pNum).getWGest() == 3) {
+                } else if (rightPanel.newOverview.pages.get(rightPanel.newOverview.pNum).getWGest() == 3) {
                     statusBar.setText("pigtail recognized");
-                } else if (rightPanel.pages.get(rightPanel.pNum).getWGest() == 4) {
+                } else if (rightPanel.newOverview.pages.get(rightPanel.newOverview.pNum).getWGest() == 4) {
                     statusBar.setText("loop recognized");
-                } else if (rightPanel.pages.get(rightPanel.pNum).getWGest() == 0) {
+                } else if (rightPanel.newOverview.pages.get(rightPanel.newOverview.pNum).getWGest() == 0) {
                     statusBar.setText("Gesture Unrecognized");
                 }
             }
@@ -70,7 +70,7 @@ public class MainScreen extends JFrame{
         */
         rightPanel.getNewPage().addActionListener(x -> {
             rightPanel.addPage();
-            rightPanel.pages.get(rightPanel.pNum).addMouseListener(mMouse);
+            rightPanel.newOverview.pages.get(rightPanel.newOverview.pNum).addMouseListener(mMouse);
             statusBar.setText("New Page Selected");
         });
         rightPanel.getDeletePage().addActionListener(x -> {
@@ -89,23 +89,27 @@ public class MainScreen extends JFrame{
         });
 
         rightPanel.getffinkTool().addActionListener(x -> {
-            rightPanel.pages.get(rightPanel.pNum).ffinkSelect();
+            rightPanel.newOverview.pages.get(rightPanel.newOverview.pNum).ffinkSelect();
             statusBar.setText("Free-Form Ink Selected");
         });
         rightPanel.getRectangleTool().addActionListener(x -> {
-            rightPanel.pages.get(rightPanel.pNum).rectSelect();
+            rightPanel.newOverview.pages.get(rightPanel.newOverview.pNum).rectSelect();
             statusBar.setText("Rectangle Selected");
         });
         rightPanel.getOvalTool().addActionListener(x -> {
-            rightPanel.pages.get(rightPanel.pNum).ovalSelect();
+            rightPanel.newOverview.pages.get(rightPanel.newOverview.pNum).ovalSelect();
             statusBar.setText("Oval Selected");
         });
         rightPanel.getTextTool().addActionListener(x -> {
-            rightPanel.pages.get(rightPanel.pNum).wordsSelect();
+            rightPanel.newOverview.pages.get(rightPanel.newOverview.pNum).wordsSelect();
             statusBar.setText("Text Selected");
         });
 
-        rightPanel.pages.get(rightPanel.pNum).addMouseListener(mMouse);
+        rightPanel.getOverButton().addActionListener(x -> {
+            rightPanel.overviewMode(rightPanel.sp.getViewportBorderBounds());
+            statusBar.setText("Overview Mode");
+        });
+        rightPanel.newOverview.pages.get(rightPanel.newOverview.pNum).addMouseListener(mMouse);
 
 
 

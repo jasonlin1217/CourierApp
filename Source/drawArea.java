@@ -35,6 +35,7 @@ public class drawArea extends JComponent {
     private boolean words = false;
     private boolean mouseRelease = false;
     private boolean nTB = false;
+    private int cooldown = 0;
     private String text = "";
     private String last = "";
     int height = 1;
